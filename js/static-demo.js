@@ -63,7 +63,55 @@
     localStorage.setItem('attendance_init', 'true');
   }
 
-  initDatabase();
+  var BUCKET_ID = 'QnBLzfuWK83iseDowjt7UY';
+  var CLOUD_URL = 'https://kvdb.io/' + BUCKET_ID + '/state';
+
+  // Load from cloud and sync with localStorage
+  function pullFromCloud(callback) {
+    $.ajax({
+      url: CLOUD_URL,
+      type: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        if (data && data.teachers && data.classes) {
+          localStorage.setItem('teachers', JSON.stringify(data.teachers));
+          localStorage.setItem('classes', JSON.stringify(data.classes));
+          localStorage.setItem('attendance_init', 'true');
+          console.log('[Cloud Sync] Database pulled and synced successfully.');
+        } else {
+          console.log('[Cloud Sync] Cloud is empty. Seeding local database to cloud.');
+          initDatabase();
+          pushToCloud();
+        }
+        if (callback) callback();
+      },
+      error: function(err) {
+        console.warn('[Cloud Sync] Failed to pull from cloud, using offline localStorage.', err);
+        initDatabase();
+        if (callback) callback();
+      }
+    });
+  }
+
+  // Push localStorage state to cloud
+  function pushToCloud() {
+    var payload = {
+      teachers: JSON.parse(localStorage.getItem('teachers') || '[]'),
+      classes: JSON.parse(localStorage.getItem('classes') || '[]')
+    };
+    $.ajax({
+      url: CLOUD_URL,
+      type: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(payload),
+      success: function() {
+        console.log('[Cloud Sync] Local database pushed to cloud successfully.');
+      },
+      error: function(err) {
+        console.error('[Cloud Sync] Failed to push local database to cloud.', err);
+      }
+    });
+  }
 
   // Helper function to get database tables
   function getTeachers() {
@@ -71,12 +119,14 @@
   }
   function setTeachers(teachers) {
     localStorage.setItem('teachers', JSON.stringify(teachers));
+    pushToCloud();
   }
   function getClasses() {
     return JSON.parse(localStorage.getItem('classes') || '[]');
   }
   function setClasses(classes) {
     localStorage.setItem('classes', JSON.stringify(classes));
+    pushToCloud();
   }
 
   // Session simulator
@@ -540,6 +590,8 @@
 
   // Run automatically on load
   $(document).ready(function() {
-    window.initStaticPage();
+    pullFromCloud(function() {
+      window.initStaticPage();
+    });
   });
 })();

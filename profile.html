@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <link rel="stylesheet" href="css/style.css"/>
+  <title>Profile - Preview Demo</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/static-demo.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/profile.js"></script>
+  <!-- Custom styles for this template -->
+    <link href="navbar-fixed-top.css" rel="stylesheet">
+ </head>
+ <body>
+   <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Online Attendance</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="teacher.html">Dashboard</a></li>
+            <li class="active"><a href="profile.html">Profile</a></li>
+            <li><a href="statistics.html">Statistics</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#" id="logout-btn">Logout</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+  
+  <div class="container" style="margin-top: 70px;">
+    <h2>Welcome. Edit your profile here.</h2><br>
+    <div class="wrapper">
+      <dl class="dl-horizontal">
+        <dt>Name : </dt>
+        <dd>
+          <div class="input-group">
+          <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+          <input class="form-control" name="name" placeholder="Enter your name">
+          </div>
+        </dd>
+        <dt>Phone : </dt>
+        <dd>
+          <div class="input-group">
+          <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+          <input class="form-control" name="phone" placeholder="Enter your phone">
+          </div>
+        </dd>
+        <dt>Email : </dt>
+        <dd>
+          <div class="input-group">
+          <span class="input-group-addon">@</span>
+          <input class="form-control" name="email" placeholder="Enter your email">
+          </div>
+        </dd>
+        <dt>Classes : </dt>
+        <dd id="classes-count-profile">0</dd>
+     </dl>
+     <button class="btn btn-success update-profile">Save</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="margin-top: 50px;">
+    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p>&copy; 2026 Vijay Mahes &middot; developed by <a href="https://github.com/vijaymahes9080">Vijay Mahes</a></p>
+  </footer>
+ </body>
+</html>

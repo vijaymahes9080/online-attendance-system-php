@@ -1,4 +1,4 @@
-# Online Attendance System in PHP
+# Online Attendance System
 
 An advanced online attendance system designed to help teachers, students, and college administration by automating the entire process. This system is designed with scalability, modular design, and Object-Oriented Programming (OOP) in PHP, making it easy to configure, maintain, and extend.
 
@@ -26,7 +26,7 @@ An advanced online attendance system designed to help teachers, students, and co
 2. **Configure Database**:
    - Create a MySQL database named `attendance_system`.
    - Import the `attendance.sql` file located in the `Attendance-System` directory into your MySQL database.
-   - Configure database credentials inside `Attendance-System/class.php`.
+   - Configure database credentials inside `class.php`.
 
 3. **Deploy**:
    - Place the project folder in your local server directory (e.g., `htdocs` for XAMPP or `www` for WampServer).

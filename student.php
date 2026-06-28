@@ -67,9 +67,11 @@
   </div>
   </div><!-- /.container -->
    <!-- FOOTER -->
-      <footer style="background:; height:;">
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2026 Vijay Mahes &middot; developed by <a href="https://github.com/vijaymahes9080">Vijay Mahes</a></p>
+      <footer style="margin-top: 80px; padding: 20px 0; border-top: 1px solid #eaeaea;">
+        <div class="container">
+          <p class="pull-right"><a href="#">Back to top</a></p>
+          <p>&copy; 2026 Vijay Mahes &middot; developed by <a href="https://github.com/vijaymahes9080">Vijay Mahes</a></p>
+        </div>
       </footer>
 
     

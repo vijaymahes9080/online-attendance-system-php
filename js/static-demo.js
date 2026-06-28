@@ -324,6 +324,7 @@
   window.initStaticPage = function() {
     var path = window.location.pathname;
     var page = path.substring(path.lastIndexOf('/') + 1);
+    if (page === '') page = 'index.html';
 
     var teacher = getCurrentTeacher();
 

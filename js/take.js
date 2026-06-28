@@ -1,20 +1,20 @@
 $(document).ready(function() {
-  $('.marker').on('click',function() {
+  $(document).on('click', '.marker', function() {
     markAsPresent($(this));
   });
   $('#submit').on('click',function() {
     submitData();
   });
-  $('.delete-roll').on('click',function() {
-    deleteWarning($(this).parent().find('.roll').text());
+  $(document).on('click', '.delete-roll', function() {
+    deleteWarning($(this).closest('.student-record').find('.roll').text());
   });
-  $('.delete-rollnumber').on('click',function() {
-    deleteRoll($(this).parent().find('p .warning-roll').text());
+  $(document).on('click', '.delete-rollnumber', function() {
+    deleteRoll($('.warning-roll').text());
   });
-  $(".roll").tooltip({title:'Click to see history',placement:'top'});
-  $(".present").tooltip({title:'This is the number of days the student has attended your classes',placement:'top'});
-  $(".marker").tooltip({title:'Click to mark this student as present or absent',placement:'top'});
-  $(".delete-roll").tooltip({title:'Click to delete the student',placement:'top'});
+  $(document).tooltip({
+    selector: '.roll, .present, .marker, .delete-roll',
+    placement: 'top'
+  });
 });
 function deleteWarning(roll) {
   $('.warning-roll').html(roll);
@@ -78,7 +78,8 @@ function submitData() {
         });
         $('#studentRecords').show('fast',function () {
           setTimeout(function() {
-            window.location = "teacher.php";
+            var ext = window.location.pathname.endsWith('.html') ? '.html' : '.php';
+            window.location = "teacher" + ext;
           },1500);
         });
       }

@@ -1,16 +1,165 @@
 <!DOCTYPE html>
 <html>
  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/style.css"/>
   <title>Student Attendance - Preview Demo</title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
   <script src="js/jquery.min.js"></script>
   <script src="js/static-demo.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/login.js"></script>
-   <!-- Custom styles for this template -->
-    <link href="navbar-fixed-top.css" rel="stylesheet">
+  <link href="navbar-fixed-top.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      color: #333;
+    }
+    .hero-section {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      margin-top: 20px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .hero-text {
+      flex: 1 1 500px;
+      padding-right: 20px;
+    }
+    .hero-text h1 {
+      font-weight: 800;
+      font-size: 3em;
+      background: linear-gradient(45deg, #4b6cb7, #182848);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+    .hero-text p {
+      font-size: 1.2em;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+    .hero-image-container {
+      flex: 1 1 400px;
+      text-align: center;
+    }
+    .hero-image-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 15px 35px rgba(75, 108, 183, 0.25);
+      transition: transform 0.5s ease;
+    }
+    .hero-image-container img:hover {
+      transform: scale(1.02) rotate(1deg);
+    }
+    .portal-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    .portal-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      border: 1px solid #eaeaea;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+    .portal-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    }
+    .portal-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .portal-header img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-right: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+    .portal-title h3 {
+      font-weight: 700;
+      margin: 0;
+      font-size: 1.6em;
+      color: #182848;
+    }
+    .portal-title p {
+      color: #888;
+      margin: 5px 0 0 0;
+    }
+    .portal-body {
+      flex-grow: 1;
+    }
+    .btn-portal {
+      background: linear-gradient(45deg, #4b6cb7, #182848);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 24px;
+      font-weight: 600;
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(75, 108, 183, 0.3);
+      width: 100%;
+      text-align: center;
+    }
+    .btn-portal:hover {
+      background: linear-gradient(45deg, #182848, #4b6cb7);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(75, 108, 183, 0.4);
+    }
+    footer {
+      background: #182848;
+      color: #ccc;
+      padding: 30px 0;
+      margin-top: 80px;
+      border-top: 4px solid #4b6cb7;
+    }
+    footer a {
+      color: #4b6cb7;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    footer a:hover {
+      color: #fff;
+    }
+    .demo-info-badge {
+      background: #e8f0fe;
+      color: #1a73e8;
+      border: 1px solid #c2e7ff;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 25px;
+      font-size: 1.1em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  </style>
  </head>
  <body>
  
@@ -24,7 +173,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">Online Attendance</a>
+          <a class="navbar-brand" href="index.html" style="font-weight: 800;">Online Attendance</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -35,77 +184,118 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-  <div class="container" style="margin-top: 70px;">
-    <div class="alert alert-info">
-      <strong>Static Demo Mode:</strong> Use credentials <strong>vijay@demo.com</strong> / <strong>password</strong> to login, or register a new account.
+
+  <div class="container">
+    
+    <!-- Hero Banner -->
+    <div class="hero-section">
+      <div class="hero-text">
+        <h1>Smart Classroom Attendance</h1>
+        <p>Automate student records, view visual data reports, and coordinate classes with ease. A modern web portal built for seamless faculty and student interaction.</p>
+        <div class="demo-info-badge">
+          <span class="glyphicon glyphicon-info-sign"></span>
+          <span><strong>Quick Demo:</strong> Log in as Faculty with <strong>vijay@demo.com</strong> / <strong>password</strong>.</span>
+        </div>
+      </div>
+      <div class="hero-image-container">
+        <img src="img/attendance_hero.png" alt="Smart Attendance Portal Dashboard UI Banner">
+      </div>
     </div>
-    <h2>For Students</h2>
-    <h4>Click here for <a href="student.html">Student Dashboard</a></h4>
-    <hr>
-    <h2>For Faculty</h2>
-    <div class="alert alert-warning hidden">
-      <span></span>
-      <button type="button" class="close" onclick="$('.alert').addClass('hidden');">&times;</button>
-    </div>
-    <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>Login</th>
-          <th>Sign Up</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <form id="login">
-              <div class="form-group">
+
+    <div class="portal-container">
+      
+      <!-- Student Portal Card -->
+      <div class="portal-card">
+        <div>
+          <div class="portal-header">
+            <img src="img/student_icon.png" alt="Student Portal Dashboard Icon">
+            <div class="portal-title">
+              <h3>Student Portal</h3>
+              <p>Check Attendance Records</p>
+            </div>
+          </div>
+          <div class="portal-body">
+            <p>Access your subject-specific attendance dashboard, track daily presence timelines, and view visual percentage meters.</p>
+          </div>
+        </div>
+        <div style="margin-top: 25px;">
+          <a href="student.html" class="btn btn-portal">Enter Student Dashboard</a>
+        </div>
+      </div>
+
+      <!-- Faculty Portal Card -->
+      <div class="portal-card">
+        <div>
+          <div class="portal-header">
+            <img src="img/faculty_icon.png" alt="Faculty Portal Dashboard Icon">
+            <div class="portal-title">
+              <h3>Faculty Portal</h3>
+              <p>Take Attendance & Manage Classes</p>
+            </div>
+          </div>
+          <div class="portal-body">
+            <div class="alert alert-warning hidden" style="margin-bottom: 15px;">
+              <span></span>
+              <button type="button" class="close" onclick="$('.alert').addClass('hidden');">&times;</button>
+            </div>
+            
+            <!-- Facade Login form -->
+            <form id="login" style="margin-bottom: 0;">
+              <div class="form-group" style="margin-bottom: 10px;">
                 <label>Email ID</label>
-                <input class="form-control" placeholder="Email" type="email" name="email">
+                <input class="form-control" placeholder="Email" type="email" name="email" value="vijay@demo.com">
               </div>
-              <div class="form-group">
+              <div class="form-group" style="margin-bottom: 15px;">
                 <label>Password</label>
-                <input class="form-control" placeholder="Password" type="password" name="password">
+                <input class="form-control" placeholder="Password" type="password" name="password" value="password">
               </div>
-              <button class="btn btn-primary pull-right">Login</button>
+              <button class="btn btn-portal">Sign In as Faculty</button>
             </form>
-          </td>
-          <td>
+          </div>
+        </div>
+      </div>
+
+      <!-- Faculty SignUp Card -->
+      <div class="portal-card">
+        <div>
+          <div class="portal-header">
+            <div class="portal-title" style="padding-left: 5px;">
+              <h3>Faculty Registration</h3>
+              <p>Create a Teacher Account</p>
+            </div>
+          </div>
+          <div class="portal-body">
             <form id="signup">
-              <div class="form-group">
-                <label>Name</label>
+              <div class="form-group" style="margin-bottom: 8px;">
                 <input class="form-control" placeholder="Name" type="text" name="name">
               </div>
-              <div class="form-group">
-                <label>Phone Number</label>
+              <div class="form-group" style="margin-bottom: 8px;">
                 <input class="form-control" placeholder="Phone" type="text" name="phone">
               </div>
-              <div class="form-group">
-                <label>Email ID</label>
+              <div class="form-group" style="margin-bottom: 8px;">
                 <input class="form-control" placeholder="Email" type="email" name="email">
               </div>
-              <div class="form-group">
-                <label>Password</label>
+              <div class="form-group" style="margin-bottom: 8px;">
                 <input class="form-control" placeholder="Password" type="password" name="password">
-                <span class="help-block">Password should be 6 characters long.</span>
               </div>
-              <div class="form-group">
-                <label>Re-type Password</label>
+              <div class="form-group" style="margin-bottom: 15px;">
                 <input class="form-control" placeholder="Re-type Password" type="password" name="password2">
               </div>
-              <button class="btn btn-primary pull-right">Sign Up</button>
+              <button class="btn btn-portal">Register New Account</button>
             </form>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-     <!-- FOOTER -->
-      <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2026 Vijay Mahes &middot; developed by <a href="https://github.com/vijaymahes9080">Vijay Mahes</a></p>
-      </footer>
+          </div>
+        </div>
+      </div>
 
-    </div><!-- /.container -->
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container text-center">
+      <p>&copy; 2026 Vijay Mahes &middot; developed by <a href="https://github.com/vijaymahes9080">Vijay Mahes</a></p>
+    </div>
+  </footer>
 
  </body>
 </html>
